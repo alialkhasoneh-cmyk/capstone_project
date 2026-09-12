@@ -1,0 +1,27 @@
+{
+    "target_directory": "C:\\",
+    "running_processes_sample": [
+        {
+            "name": "System Idle Process",
+            "pid": 0
+        },
+        {
+            "name": "System",
+            "pid": 4
+        },
+        {
+            "name": "",
+            "pid": 140
+        },
+        {
+            "name": "Registry",
+            "pid": 184
+        },
+        {
+            "name": "IntelCpHDCPSvc.exe",
+            "pid": 608
+        }
+    ],
+    "recent_activity": [],
+    "cryptographic_hashes": {}
+}
