@@ -36,7 +36,7 @@ def main():
         for file_info in recent_files:
             filename = file_info["filename"]
             filepath = os.path.join(target_folder, filename)
-            # استدعاء دالة التشفير من ملف utils
+            # Calling the encryption function from a file utils
             file_hashes[filename] = generate_sha256(filepath)
         
         # 4. Report Generation
