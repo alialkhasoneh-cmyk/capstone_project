@@ -9,13 +9,13 @@ def main():
     print("=== DFIR Triage Automation Tool ===")
     
     # 1. Interactive CLI & Input Validation
-    # إذا لم يقم المستخدم بتمرير مسار المجلد في سطر الأوامر، سيسأله البرنامج بشكل تفاعلي
+    # If the user does not pass the folder path via the command line, the program will ask for it interactively.
     if len(sys.argv) > 1:
         target_folder = sys.argv[1]
     else:
         target_folder = input("[?] Enter the path to the evidence folder to scan: ").strip()
 
-    # التحقق من صحة المدخلات (Input Validation)
+    #Input validation(Input Validation)
     if not os.path.isdir(target_folder):
         print(f"[-] Error: The folder '{target_folder}' does not exist.")
         sys.exit(1)
@@ -24,10 +24,10 @@ def main():
     
     try:
         # 2. Object-Oriented Programming (OOP) Integration
-        # تهيئة فئة الفحص
+        # Configuring the inspection category
         scanner = TriageScanner(target_folder)
         
-        # جمع البيانات
+        # Data collection
         processes = scanner.get_running_processes()
         recent_files = scanner.get_recent_files(window_seconds=600)  # فحص ملفات آخر 10 دقائق
         
@@ -47,7 +47,7 @@ def main():
             "cryptographic_hashes": file_hashes
         }
         
-        # طباعة ملخص سريع على الشاشة
+        # Print a quick summary on the screen.
         print("\n--- Triage Report Summary ---")
         print(f"[+] Processes Sampled: {len(processes)}")
         if recent_files:
@@ -60,13 +60,13 @@ def main():
             print("  [-] No recent file modifications detected.")
             
         # 5. Data Persistence
-        # حفظ التقرير النهائي بصيغة JSON في مجلد data
+        # Save the final report in JSON format in the 'data' folder.
         output_file = os.path.join("data", "triage_report.json")
         export_to_json(report_data, output_file)
         
     except Exception as e:
         print(f"[-] An unexpected error occurred: {e}")
 
-# ضمان تشغيل الكود فقط إذا تم استدعاء هذا الملف مباشرة
+# Ensure the code runs only if this file is called directly.
 if __name__ == "__main__":
     main()
